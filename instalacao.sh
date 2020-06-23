@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # ----------------------------- VARIÁVEIS ----------------------------- #
 URL_GOOGLE_CHROME="https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
+URL_DISCORD = "wget -cO discord.deb https://discordapp.com/api/download?platform=linux&format=deb"
 DIRETORIO_DOWNLOADS="$HOME/Downloads/programas"
 
 PROGRAMAS_PARA_INSTALAR=(
@@ -15,6 +16,7 @@ PROGRAMAS_PARA_INSTALAR=(
   git
   qbittorent
   ttf-mscorefonts-installer
+  nodejs
 )
 # ---------------------------------------------------------------------- #
 
@@ -36,6 +38,7 @@ sudo apt update && sudo apt upgrade -y
 ## Download e instalaçao de programas externos ##
 mkdir "$DIRETORIO_DOWNLOADS"
 wget -c "$URL_GOOGLE_CHROME"       -P "$DIRETORIO_DOWNLOADS"
+wget -c "$URL_DISCORD"       -P "$DIRETORIO_DOWNLOADS"
 
 ## Instalando pacotes .deb baixados na sessão anterior ##
 sudo dpkg -i $DIRETORIO_DOWNLOADS/*.deb
@@ -54,16 +57,22 @@ flatpak install flathub org.gimp.GIMP -y
 flatpak install flathub org.videolan.VLC -y
 
 ## Instalando pacotes Snap ##
+sudo rm /etc/apt/preferences.d/nosnap.pref ## Removendo a trava de instalação de snaps do Mint 20.x ##
+sudo apt install snapd -y
 sudo snap install scrcpy
 # ---------------------------------------------------------------------- #
 
 # ----------------------------- PÓS-INSTALAÇÃO ----------------------------- #
 ## Finalização, atualização e limpeza##
-apt remove gimp -y
+sudo apt remove gimp -y
 apt remove vlc -y
+apt remove pidgin -y
+apt remove hexchat 
+apt remove cheese -y
 sudo apt update && sudo apt dist-upgrade -y
-flatpak update
-sudo apt autoclean
+flatpak update -y
+sudo apt autoclean -y
 sudo apt autoremove -y
+echo "Fim da configuração\nRebooting..."
 sudo reboot
 # ---------------------------------------------------------------------- #
