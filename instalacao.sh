@@ -58,6 +58,7 @@ flatpak install flathub org.videolan.VLC -y
 
 ## Instalando pacotes Snap ##
 sudo rm /etc/apt/preferences.d/nosnap.pref ## Removendo a trava de instalação de snaps do Mint 20.x ##
+sudo apt update
 sudo apt install snapd -y
 sudo snap install scrcpy
 # ---------------------------------------------------------------------- #
