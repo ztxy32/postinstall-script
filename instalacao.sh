@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # ----------------------------- VARIÁVEIS ----------------------------- #
 URL_GOOGLE_CHROME="https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
-URL_DISCORD = "wget -cO discord.deb https://discordapp.com/api/download?platform=linux&format=deb"
+URL_DISCORD="wget -cO discord.deb https://discordapp.com/api/download?platform=linux&format=deb"
 DIRETORIO_DOWNLOADS="$HOME/Downloads/programas"
 
 PROGRAMAS_PARA_INSTALAR=(
@@ -9,14 +9,13 @@ PROGRAMAS_PARA_INSTALAR=(
   steam-installer
   steam-devices
   steam:i386
-  opera
   sublime-text
   code
   default-jdk
   git
-  qbittorent
-  ttf-mscorefonts-installer
+  qbittorrent
   nodejs
+  ttf-mscorefonts-installer
 )
 # ---------------------------------------------------------------------- #
 
@@ -68,12 +67,13 @@ sudo snap install scrcpy
 sudo apt remove gimp -y
 apt remove vlc -y
 apt remove pidgin -y
-apt remove hexchat 
+apt remove hexchat -y
 apt remove cheese -y
+apt remove celluloid -y
+apt remove transmission -y
 sudo apt update && sudo apt dist-upgrade -y
 flatpak update -y
 sudo apt autoclean -y
 sudo apt autoremove -y
-echo "Fim da configuração\nRebooting..."
-sudo reboot
+echo "Fim da configuração, por favor reinicie o computador"
 # ---------------------------------------------------------------------- #
