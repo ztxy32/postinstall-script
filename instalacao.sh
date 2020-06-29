@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # ----------------------------- VARIÁVEIS ----------------------------- #
 URL_GOOGLE_CHROME="https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
-URL_DISCORD="discord.deb https://discordapp.com/api/download?platform=linux&format=deb"
+URL_DISCORD="https://discordapp.com/api/download?platform=linux&format=deb"
 DIRETORIO_DOWNLOADS="$HOME/Downloads/programas"
 
 PROGRAMAS_PARA_INSTALAR=(
