@@ -2,6 +2,7 @@
 # ----------------------------- VARIÁVEIS ----------------------------- #
 URL_GOOGLE_CHROME="https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
 URL_DISCORD="https://discordapp.com/api/download?platform=linux&format=deb"
+URL_OPERA="https://download.opera.com/download/get/?partner=www&opsys=Linux"
 DIRETORIO_DOWNLOADS="$HOME/Downloads/programas"
 
 PROGRAMAS_PARA_INSTALAR=(
@@ -38,6 +39,7 @@ sudo apt update && sudo apt upgrade -y
 mkdir "$DIRETORIO_DOWNLOADS"
 wget -c "$URL_GOOGLE_CHROME"       -P "$DIRETORIO_DOWNLOADS"
 wget -c "$URL_DISCORD"       -P "$DIRETORIO_DOWNLOADS"
+wget -c "$URL_OPERA"       -P "$DIRETORIO_DOWNLOADS"
 
 ## Instalando pacotes .deb baixados na sessão anterior ##
 sudo dpkg -i $DIRETORIO_DOWNLOADS/*.deb
