@@ -10,7 +10,6 @@ PROGRAMAS_PARA_INSTALAR=(
   steam-installer
   steam-devices
   steam:i386
-  sublime-text
   code
   default-jdk
   git
@@ -18,6 +17,7 @@ PROGRAMAS_PARA_INSTALAR=(
   nodejs
   ttf-mscorefonts-installer
 )
+
 # ---------------------------------------------------------------------- #
 
 # ----------------------------- REQUISITOS ----------------------------- #
@@ -54,15 +54,17 @@ for nome_do_programa in ${PROGRAMAS_PARA_INSTALAR[@]}; do
 done
 
 ## Instalando pacotes Flatpak ##
-flatpak install flathub org.gimp.GIMP -y
-flatpak install flathub org.videolan.VLC -y
+FLATPAKS_PARA_INSTALAR=(
+  org.gimp.GIMP
+  org.videolan.VLC
+  io.github.shiftey.Desktop
+  com.stremio.Stremio
+  com.spotify.Client
+)
+for nome_do_programa in ${FLATPAKS_PARA_INSTALAR[@]}; do
+  flatpak install flathub "$nome_do_programa" -y
+done
 
-## Instalando pacotes Snap ##
-sudo rm /etc/apt/preferences.d/nosnap.pref ## Removendo a trava de instalação de snaps do Mint 20.x ##
-sudo apt update
-sudo apt install snapd -y
-sudo snap install scrcpy
-# ---------------------------------------------------------------------- #
 
 # ----------------------------- PÓS-INSTALAÇÃO ----------------------------- #
 ## Finalização, atualização e limpeza##
