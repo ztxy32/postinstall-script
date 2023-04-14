@@ -8,17 +8,12 @@ DIRETORIO_DOWNLOADS="$HOME/Downloads/programas"
 PROGRAMAS_PARA_INSTALAR=(
   flameshot
   steam-installer
-  steam-devices
-  steam:i386
   code
   default-jdk
   git
   qbittorrent
   nodejs
-  ttf-mscorefonts-installer
 )
-
-# ---------------------------------------------------------------------- #
 
 # ----------------------------- REQUISITOS ----------------------------- #
 ## Removendo travas eventuais do apt ##
@@ -28,7 +23,6 @@ sudo rm /var/cache/apt/archives/lock
 ## Atualizando o repositório ##
 sudo apt update && sudo apt upgrade -y
 
-# ---------------------------------------------------------------------- #
 
 # ----------------------------- EXECUÇÃO ----------------------------- #
 
@@ -62,19 +56,26 @@ for nome_do_programa in ${FLATPAKS_PARA_INSTALAR[@]}; do
   flatpak install flathub "$nome_do_programa" -y
 done
 
-
 # ----------------------------- PÓS-INSTALAÇÃO ----------------------------- #
 ## Finalização, atualização e limpeza##
-sudo apt remove gimp -y
-apt remove vlc -y
-apt remove pidgin -y
-apt remove hexchat -y
-apt remove cheese -y
-apt remove celluloid -y
-apt remove transmission -y
+
+REMOVER=(
+  gimp
+  vlc
+  pidgin
+  hexchat
+  cheese
+  celluloid
+  transmission
+)
+for nome_do_programa in ${REMOVER[@]}; do
+  apt remove "$nome_do_programa" -y
+done
+
 sudo apt update && sudo apt dist-upgrade -y
 flatpak update -y
 sudo apt autoclean -y
 sudo apt autoremove -y
+sudo apt install -f
 echo "Fim da configuração, por favor reinicie o computador"
 # ---------------------------------------------------------------------- #
