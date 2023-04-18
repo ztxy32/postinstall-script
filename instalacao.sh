@@ -7,7 +7,6 @@ DIRETORIO_DOWNLOADS="$HOME/Downloads/programas"
 
 PROGRAMAS_PARA_INSTALAR=(
   flameshot
-  steam-installer
   code
   default-jdk
   git
@@ -51,6 +50,7 @@ FLATPAKS_PARA_INSTALAR=(
   io.github.shiftey.Desktop
   com.stremio.Stremio
   com.spotify.Client
+  com.valvesoftware.Steam
 )
 for nome_do_programa in ${FLATPAKS_PARA_INSTALAR[@]}; do
   flatpak install flathub "$nome_do_programa" -y
